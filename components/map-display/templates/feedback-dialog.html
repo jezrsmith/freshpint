@@ -1,0 +1,15 @@
+<md-dialog class="feedback-dialog">
+    <md-dialog-content>
+
+        <div class="md-dialog-content">
+            <div layout="row" layout-align="end start">
+                <md-button class="md-icon-button" ng-click="cancel()">
+                    <md-icon md-svg-src="icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+                </md-button>
+            </div>
+
+
+            <creator-form-display-directive formurl="$root.config.feedbackformurl" serviceurl="$root.config.feedbackservice" presetdata='presetdata'></creator-form-display-directive>
+        </div>
+    </md-dialog-content>
+</md-dialog>

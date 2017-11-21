@@ -1,0 +1,56 @@
+<div ng-non-bindable="">
+    <h1 id="firstHeading" class="firstHeading">{{selectedPub.pubdetails.pubName}}</h1>
+    <div id="bodyContent">
+        <p><b>{{selectedPub.pubdetails.pubName}}</b> is a freshpint smart pub! {{selectedPub.pubdetails.description}}</p>
+        <hr>
+        <div layout="row" layout-xs="column">
+            <div flex>
+                <p>Find us:<br>
+                    <br>
+                    {{selectedPub.pubdetails.pubLandlord}}<br>
+                    {{selectedPub.pubdetails.pubName}}<br>
+                    {{selectedPub.pubdetails.pubAddress}}<br>
+                </p>
+                <p>Opening Hours: {{selectedPub.pubdetails.pubOpeningHours}}</p>
+                <br>
+                <p>Contact Us: <a href="mailto:{{selectedPub.pubdetails.email}}"> {{selectedPub.pubdetails.email}}</a></p>
+                <p>Been here already? <a ng-click="sendFeedback(selectedPub.pubdetails.pubName)">Tell us about your experience</a><br></p>
+
+                <p>Powered by <a href="http://www.tibco.com">TIBCO Connected Intelligence</a></p>
+            </div>
+            <div flex>
+                <div>
+                    <p>How fresh is our beer? Higher is fresher!<br></p>
+                    <div ng-repeat="keg in selectedPub.pubdetails.keg">
+                        <p>
+                            <div layout="row" layout-align="start center">
+                        <span><b>{{keg.drinkName}}</b> - {{keg.drinkType}}</span>
+                                <div class="rating-viz">
+                                    <div class="current-rating">{{keg.freshness}}/999</div>
+                                    <round-progress
+                                            max=999
+                                            current=keg.freshness
+                                            color="#45ccce"
+                                            bgcolor="#eaeaea"
+                                            radius="40"
+                                            stroke="10"
+                                            semi="false"
+                                            rounded="false"
+                                            clockwise="true"
+                                            responsive="false"
+                                            duration="800"
+                                            animation="easeOutCubic"
+                                            animation-delay="1">
+                                    </round-progress>
+                                </div>
+                            </div>
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+</div>

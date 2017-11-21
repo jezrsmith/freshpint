@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Mapapp POC</title>
+
+  <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css'>
+
+  <!-- bootstrap templates -->
+  <!-- bootstrap standard design -->
+  <link rel='stylesheet prefetch' href='https://unpkg.com/bootswatch@3.3.7/yeti/bootstrap.min.css'>
+  <!-- dark design -->
+  <!--link rel='stylesheet prefetch' href='https://bootswatch.com/darkly/bootstrap.min.css'-->
+  <!-- material design/paper -->
+  <!--link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/paper/bootstrap.min.css" rel="stylesheet"-->
+
+  <link rel="stylesheet" href="css/style.css">
+
+
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+
+  <link rel='stylesheet prefetch' href='https://cdn.rawgit.com/odra/ng-json-explorer/master/dist/angular-json-explorer.min.css'>
+  <link rel='stylesheet prefetch' href='https://unpkg.com/ng-formio-builder@latest/dist/ngFormBuilder-complete.css'>
+
+</head>
+
+  <!-- angular & jquery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular-animate.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular-aria.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular-messages.min.js"></script>
+
+  <!-- Angular Material Library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+
+  <script src="dependencies/angular-new-router/router.es5.min.js"></script>
+
+  <!-- maps -->
+  <script src="https://maps.google.com/maps/api/js?libraries=placeses,visualization,drawing,geometry,places&key=AIzaSyDxjLgNVAJJEPABxc-Yhb86Y4K7XnzRAUg"></script>
+  <script src="dependencies/ng-map/ng-map.min.js"></script>
+
+  <!-- progress viz -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-svg-round-progressbar/0.4.8/roundProgress.min.js"></script>
+
+  <!-- form-io -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/danialfarid-angular-file-upload/12.2.13/ng-file-upload.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.6.6/angular-sanitize.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ng-dialog/1.4.0/js/ngDialog.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-moment/1.0.1/angular-moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
+  <script src="dependencies/bootstrap-ui-datetime-picker/dist/datetime-picker.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-mask/1.8.7/mask.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/blob-polyfill/1.0.20150320/Blob.min.js"></script>
+  <script src="dependencies/file-saver.js/FileSaver.js"></script>
+  <script src="dependencies/angular-file-saver/dist/angular-file-saver.bundle.js"></script>
+  <script src="dependencies/angular-ui-ace/ui-ace.js"></script>
+  <script src="dependencies/angular-ui-select/dist/select.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ckeditor/1.0.3/angular-ckeditor.min.js"></script>
+  <script src="dependencies/ng-formio/dist/formio.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-drag-and-drop-lists/2.1.0/angular-drag-and-drop-lists.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/danialfarid-angular-file-upload/12.2.13/ng-file-upload.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ng-tags-input/3.2.0/ng-tags-input.min.js"></script>
+  <script src='https://unpkg.com/signature_pad@1.5.3/signature_pad.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js'></script>
+  <script src='https://cdn.rawgit.com/odra/ng-json-explorer/master/dist/angular-json-explorer.min.js'></script>
+
+  <!-- implementation files -->
+  <script src="js/freshpint.js"></script>
+  <script src="components/page-home/page-home.js"></script>
+  <script src="components/map-display/map-display-directive.js"></script>
+  <script src="components/map-display/map-display.js"></script>
+  <script src="components/creator-form-display/creator-form-display-directive.js"></script>
+  <script src="components/creator-form-display/creator-form-display.js"></script>
+
+
+</head>
+
+<body>
+
+<style>
+  .case-form-app {
+    height: 100%;
+    overflow: auto;
+  }
+</style>
+
+
+
+<div class="case-form-app page-content" ng-app="freshpintApp" ng-controller="freshpintAppCtrl">
+    <div flex ng-viewport class="cmf-viewport"></div>
+</div>
+
+</body>
+</html>
+
+
+
+

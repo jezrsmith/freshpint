@@ -1,0 +1,31 @@
+<md-toolbar>
+
+        <div class="md-toolbar-tools">
+                <h2 md-truncate flex>Freshpint</h2>
+                <md-button ng-click="toggleSearch()">
+                        <md-icon md-svg-src="icons/ic_search_white_24px.svg"></md-icon>
+                </md-button>
+        </div>
+
+</md-toolbar>
+
+<md-content>
+<div class="mainpane">
+        <div ng-if="search" layout="column" layout-align="center center">
+                <div class="searchBox">
+                        Find beer:
+                        <input places-auto-complete size=80
+                               ng-model="address"
+                               component-restrictions="{country:'uk'}"
+                               types="{{types}}"
+                               on-place-changed="placeChanged()" />
+                </div>
+        </div>
+<ng-map ng-if="ready" id="beermap" class="map-section" center="russel square" zoom="14" >
+        <marker ng-repeat="marker in markers" on-click="setSelectedPub(marker)" id="{{marker.pubdetails.pubID}}marker" position="{{marker.position}}" title="{{marker.title}}" on-click="map.showInfoWindow({{marker.pubdetails.pubID}})" icon='icons/drink.png'>
+        </marker>
+        <info-window id='pub-iw' template="components/map-display/templates/pub-information.html">
+        </info-window>
+</ng-map>
+</div>
+</md-content>
