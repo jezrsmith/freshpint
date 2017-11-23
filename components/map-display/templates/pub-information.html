@@ -18,36 +18,66 @@
 
                 <p>Powered by <a href="http://www.tibco.com">TIBCO Connected Intelligence</a></p>
             </div>
-            <div flex>
+            <div flex="60">
                 <div>
+
                     <p>How fresh is our beer? Higher is fresher!<br></p>
                     <div ng-repeat="keg in selectedPub.pubdetails.keg">
+
                         <p>
                             <div layout="row" layout-align="start center">
-                        <span><b>{{keg.drinkName}}</b> - {{keg.drinkType}}</span>
+                                <div layout="column">
+                                    <span><b>{{keg.drinkName}}</b></span>
+                                    <span>{{keg.drinkType}}</span>
+                                </div>
+
                                 <div class="rating-viz">
-                                    <div class="current-rating">{{keg.freshness}}/999</div>
+                                    <div class="current-rating">
+                                        <div>Freshness</div>
+                                        <div>{{getStat(selectedPub.pubdetails.pubID, keg.drinkName)}}/999</div>
+                                    </div>
                                     <round-progress
                                             max=999
-                                            current=keg.freshness
+                                            current='getStat(selectedPub.pubdetails.pubID, keg.drinkName)'
                                             color="#45ccce"
                                             bgcolor="#eaeaea"
-                                            radius="40"
+                                            radius="45"
                                             stroke="10"
                                             semi="false"
                                             rounded="false"
                                             clockwise="true"
                                             responsive="false"
-                                            duration="800"
+                                            duration="2000"
+                                            animation="easeOutCubic"
+                                            animation-delay="1">
+                                    </round-progress>
+                                </div>
+                                <div class="rating-viz">
+                                    <div class="current-weight">
+                                        <div>Fill</div>
+                                        <div>{{getWeight(selectedPub.pubdetails.pubID, keg.drinkName)}}%</div>
+                                    </div>
+                                    <round-progress
+                                            max=100
+                                            current='getWeight(selectedPub.pubdetails.pubID, keg.drinkName)'
+                                            color="#45ccce"
+                                            bgcolor="#eaeaea"
+                                            radius="45"
+                                            stroke="10"
+                                            semi="false"
+                                            rounded="false"
+                                            clockwise="true"
+                                            responsive="false"
+                                            duration="2000"
                                             animation="easeOutCubic"
                                             animation-delay="1">
                                     </round-progress>
                                 </div>
                             </div>
+
                         </p>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>

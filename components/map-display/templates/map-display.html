@@ -21,7 +21,7 @@
                                on-place-changed="placeChanged()" />
                 </div>
         </div>
-<ng-map ng-if="ready" id="beermap" class="map-section" center="russel square" zoom="14" >
+<ng-map ng-if="ready" id="beermap" class="map-section" center="{{$root.config.mapcenter}}" zoom="{{$root.config.mapzoom}}" >
         <marker ng-repeat="marker in markers" on-click="setSelectedPub(marker)" id="{{marker.pubdetails.pubID}}marker" position="{{marker.position}}" title="{{marker.title}}" on-click="map.showInfoWindow({{marker.pubdetails.pubID}})" icon='icons/drink.png'>
         </marker>
         <info-window id='pub-iw' template="components/map-display/templates/pub-information.html">

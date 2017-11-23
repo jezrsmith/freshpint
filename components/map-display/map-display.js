@@ -3,9 +3,11 @@
  */
 
 angular.module('components.mapDisplay', ['angular-svg-round-progressbar', 'components.creatorFormDisplay.directive'])
-    .controller('mapDisplayController', ['$scope', '$rootScope', '$location', '$http', 'NgMap', '$mdDialog', function ($scope, $rootScope, $location, $http, NgMap, $mdDialog) {
+    .controller('mapDisplayController', ['$scope', '$rootScope', '$location', '$http', 'NgMap', '$mdDialog', '$interval', function ($scope, $rootScope, $location, $http, NgMap, $mdDialog, $interval) {
 
         console.log("*** mapDisplayController");
+        $scope.stats = {};
+        $scope.percentageWeight = {};
         $scope.types = "['establishment']";
         $scope.search = false;
         NgMap.getMap().then(function(map) {
@@ -13,32 +15,79 @@ angular.module('components.mapDisplay', ['angular-svg-round-progressbar', 'compo
             $scope.map = map;
         });
 
+            serviceUrl = $rootScope.config.pubservice;
+            var reqInner = {
+                method: 'GET',
+                url: serviceUrl,
+                headers: {
+                    'Content-Type': 'application/json',
+                    'accept': 'application/json'
+                }
+            };
 
-        serviceUrl = $rootScope.config.pubservice;
-        var reqInner = {
-            method: 'GET',
-            url: serviceUrl,
-            headers: {
-                'Content-Type': 'application/json',
-                'accept': 'application/json'
-            }
-        };
-        $http(reqInner).then(function(response) {
+
+            $http(reqInner).then(function (response) {
                 var pubdetails = response.data;
                 var markers = [];
                 // add markers
-                pubdetails.forEach(function(pub) {
+                pubdetails.forEach(function (pub) {
                     var marker = {};
+                    $scope.stats[pub.pubID] = {};
+                    $scope.stats[pub.pubID][pub.keg[0].drinkName] = pub.keg[0].freshness;
+                    $scope.percentageWeight[pub.pubID] = {};
+                    $scope.percentageWeight[pub.pubID][pub.keg[0].drinkName] = pub.keg[0].percentageWeight;
+
                     marker.position = [parseFloat(pub.latitude), parseFloat(pub.longtitude)];
                     marker.title = pub.pubName;
                     marker.pubdetails = pub;
                     markers.push(marker);
-                });
+
+                    // schedule updates
+                    $interval(updateStats, $rootScope.config.updateInterval);
+                }
+            )
+
+
                 $scope.pubs = pubdetails;
                 $scope.markers = markers;
                 $scope.ready = true;
-        });
-        
+            })
+
+        var updateStats = function() {
+            serviceUrl = $rootScope.config.pubservice;
+            var reqInner = {
+                method: 'GET',
+                url: serviceUrl,
+                headers: {
+                    'Content-Type': 'application/json',
+                    'accept': 'application/json'
+                }
+            };
+
+
+            $http(reqInner).then(function (response) {
+                var pubdetails = response.data;
+                pubdetails.forEach(function (pub) {
+                        $scope.stats[pub.pubID][pub.keg[0].drinkName] = pub.keg[0].freshness;
+                        $scope.percentageWeight[pub.pubID][pub.keg[0].drinkName] = pub.keg[0].percentageWeight;
+                    }
+                )
+            })
+
+        }
+
+
+
+
+        $scope.getStat = function(pubID, drinkName) {
+            return $scope.stats[pubID][drinkName];
+        }
+
+        $scope.getWeight = function(pubID, drinkName) {
+            return $scope.percentageWeight[pubID][drinkName];
+        }
+
+
         $scope.setSelectedPub = function(e, marker) {
             $scope.selectedPub = marker;
             $scope.map.showInfoWindow('pub-iw', marker.pubdetails.pubID+ 'marker');

@@ -1,5 +1,8 @@
 {
   "pubservice": "http://ec2-35-176-10-150.eu-west-2.compute.amazonaws.com:8082/pubservice",
+  "updateInterval": 2000,
+  "mapcenter": "russel square",
+  "mapzoom": 14,
   "feedbackservice": "https://eu-west-1.integration.cloud.tibcoapps.com:443/3zlhhqsvnuwpkqjh4kzlouu7rdrc4biz/feedback",
   "feedbackformurl": "forms/formdef_beerFeedback.json",
   "_sampleFeedbackPayload": "{'data':{'firstname':'John','surname':'Smith','phone':'19283847588','email':'john@tibco.com', 'pub':'mypub', 'survey':{'howWouldYouRateTheBeer':'fantastic','howWouldRateTheFreshnessOfTheBeer':'fantastic','howWouldYouRateTheFreshnessRatingAccuracyAtThisLocation':'fantastic','howWouldYouRateTheServiceAtThisLocation':'fantastic'},'comments':'It was great!','contact':true}}"

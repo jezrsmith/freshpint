@@ -19,7 +19,7 @@ angular.module('components.creatorFormDisplay', ["ui.bootstrap", "ui.select", "f
             serviceUrl = $scope.serviceurl;
             //CreatorDataService.submit(submission, serviceUrl, 'PUT');
             var reqInner = {
-                method: 'PUT',
+                method: $scope.form.submissionmethod,
                 url: serviceUrl,
                 headers: {
                     'Content-Type': 'application/json',

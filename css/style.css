@@ -11,10 +11,16 @@
 }
 
  .current-rating {
-     top: 48px;
-     right: -15px;
+     top: 60px;
+     right: -16px;
      position: relative;
  }
+
+.current-weight {
+    top: 60px;
+    right: -35px;
+    position: relative;
+}
 
 .rating-viz {
     padding-left: 20px;
